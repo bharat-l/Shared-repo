@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+body {
+    display: flex; 
+    justify-content: center; 
+     align-items: center; 
+    float: none;
+    background-color: #fff;
+    height: auto;
+    background-image: linear-gradient(to right, hsl(216, 71%, 54%), hsl(310, 54%, 55%));
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 1300px;
+    background-color: lightgray;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+     
+}
+
+
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 14px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    background-color: lightcyan;
+    border-radius: 8px;
+    
+    
+
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    width: 95%;
+}
+
+.form-group {
+    margin: 5px 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 33.33%;
+    justify-content: space-between;
+    border-radius: 28px;
+    border: none;
+}
+
+.form-group input {
+    border-radius: 8px;
+    padding: 12px 20px;
+    background-color: transparent;
+    margin-top: 8px;
+    box-shadow: 0 15px 20px rgba(107, 104, 104, 0.1);
+    border-color: lightcyan;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: box-shadow 0.3s ease-in-out;
+
+}
+
+.submit-btn {
+    margin: 10px 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+
+}
+
+.btn1 {
+    margin: 0px 20px;
+    padding: 8px 30px;
+    background-color: rgb(134, 212, 214);
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 7px;
+    border: none;
+    transition: 0.3s;
+}
+
+.material-symbols-outlined {
+    background-color: lightseagreen;
+    border: 1px solid #000;
+    margin: 2px 5px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 12px;
+
+}
+
+.tab {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    
+}
+
+.tab-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 100%;
+    text-align: left;
+
+
+}
+
+th,td,
+table {
+    border: 1px solid lightgrey;
+    margin: 7px;
+    padding: 10px;
+    border-collapse: collapse;
+    border-bottom: 2px solid rgb(180, 177, 177);
+    box-shadow: 0 2px 3 px rgba(0, 0, 0, 0.2);
+}
+button{
+    padding: 8px 14px 8px 14px;
+    margin: 10px;
+    background-color: aqua;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+
+}
+button:hover{
+    background-color: rgb(110, 216, 154);
+}
+button a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.btz{
+    padding:6px; 
+    margin:5px; 
+    background-color:lightblue;
+     border-radius: 3px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.btz:hover{
+    background-color: rgb(35, 166, 241);
+    text-decoration: underline;
+}
+.btz a{
+    text-decoration: none;
+    font-weight: bold;
+
+}
+.flex{
+        display: flex !important;
+    }
+#delete:hover{
+    background-color: rgb(235, 220, 13);
+    color: black;
+}
+#edit:hover{
+    background-color: rgb(235, 220, 13);
+}
+.pagination{
+    display: inline-flex;
+    justify-content: center;
+    align-items: right;
+    margin: 3px;
+    padding: 5px;
+    margin-top: 6px;
+}
+
+    .pagination a {
+        margin: 0 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: #007bff;
+        border: 1px solid #007bff;
+        border-radius: 3px;
+    }
+
+    .pagination strong {
+        margin: 0 5px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 3px;
+    }
+
+    .pagination a:hover {
+        background-color: #007bff;
+        color: white;
+    }
+    .table-content tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+        }

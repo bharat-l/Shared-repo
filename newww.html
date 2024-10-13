@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>JavaScript Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="C:\Users\Return Trucks\Pictures\demo-git\javascrpipt-demo\jsfevicon.png">
+    <link rel="stylesheet" href="jscsspage.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+
+<body>
+    <div class="container">
+
+        <form action="" method="post" id="textForm" name="formList" autocomplete="off" onsubmit="return validate();">
+            <h2>STUDENT DATA</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="studentName">Student name</label>
+                    <input type="text" id="textfields" name="studentName" placeholder="Enter full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="fatherName">Father name</label>
+                    <input type="text" id="textfields" name="fatherName" placeholder="Enter father name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input type="text" name="Address" placeholder="Enter full address" required>
+                </div>
+                <div class="form-group">
+                    <label for="Phnumber">Phone number</label>
+                    <input type="tel" name="Phnumber" id="digits" placeholder="Enter phone number" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="Marks">Marks</label>
+                    <input type="number" name="Marks" id="digits" placeholder="Enter your marks" maxlength="3" required>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email address</label>
+                    <input type="email" name="Email" id="mailing" placeholder="Enter mail address" required>
+                </div>
+                <div class="submit-btn">
+                    <button type="submit" value="submit" name="submit" class="btn1" id="displayButton">SUBMIT</button>
+                    <button type="button" name="clear" class="btn1" onclick="myFunction()">CLEAR</button>
+                </div>
+                <div id="formData" style="display: flex; width: 100%; flex-direction: column; gap: 10px; height: 100%;">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <script>
+        function myFunction() {
+            document.getElementById("textForm").reset();
+        }
+
+        document.getElementById('displayButton').addEventListener('click', function (event) {
+            // Prevent the form from submitting if validation fails
+            if (!validate()) {
+                event.preventDefault();
+            } else {
+                event.preventDefault(); // Prevent the form from submitting to display form data
+                displayFormData();
+            }
+        });
+
+        function displayFormData() {
+            const form = document.getElementById('textForm');
+            const formDataDiv = document.getElementById('formData');
+            const formData = new FormData(form);
+
+            formDataDiv.innerHTML = ''; // Clear previous data
+
+            formData.forEach((value, key) => {
+                const paragraph = document.createElement('div');
+                paragraph.innerHTML = `<strong>${key}:</strong> ${value} <div style="display: inline; float: right;">
+                    <span class="material-symbols-outlined" onclick="editEntry('${key}', '${value}')"> contract_edit </span> 
+                    <span class="material-symbols-outlined" onclick="deleteEntry(this, '${value}')"> delete </span></div>`;
+                formDataDiv.appendChild(paragraph);
+            });
+            form.reset();
+        }
+
+        function editEntry(key, value) {
+            const form = document.getElementById('textForm');
+            const input = form.querySelector(`[name="${key}"]`);
+            if (input) {
+                input.value = value;
+            }
+        }
+
+        function deleteEntry(element, value) {
+            const parentDiv = element.closest('div');
+            parentDiv.parentElement.remove();
+
+            // formData.delete(value);
+
+            // Clear the corresponding input field in the form if it exists
+            const form = document.getElementById('textForm');
+            const input = form.querySelector(`[name="${key}"]`);
+            if (input) {
+                input.value = '';
+            }
+        }
+
+        // Form validation code
+        function validate() {
+            if (document.formList.studentName.value == "") {
+                alert("Please provide your name!");
+                document.formList.studentName.focus();
+                return false;
+            }
+            
+            if (document.formList.fatherName.value == "") {
+                alert("Please provide your father name!");
+                document.formList.fatherName.focus();
+                return false;
+            }
+            // if (document.formList.Address.value == "") {
+            //     alert("Please provide your address!");
+            //     document.formList.Address.focus();
+            //     return false;
+            // }
+            // if (document.formList.Email.value == "") {
+            //     alert("Please provide your Email!");
+            //     document.formList.Email.focus();
+            //     return false;
+            // }
+            // if (document.formList.Phnumber.value == "" || isNaN(document.formList.Phnumber.value) ||
+            //     document.formList.Phnumber.value.length != 10) {
+            //     alert("Please provide a Phone number in the format ##########.");
+            //     document.formList.Phnumber.focus();
+            //     return false;
+            // }
+            // if (document.formList.Marks.value == "" || isNaN(document.formList.Marks.value)) {
+            //     alert("Please provide your Marks!");
+            //     return false;
+            // }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot password</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            /* Ensure the body takes full height */
+            margin: 0;
+            /* Remove default margin */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 350px;
+            height: 350px;
+            background-color: lightgray;
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            border-radius: 10px;
+            margin: auto;
+        }
+        .content {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 19px;
+            color: rgb(20, 53, 240);
+
+
+        }
+        #mailinput {
+            width: 95%;
+            margin: 10px 2px 10px 2px;
+            padding: 9px;
+            border-radius: 6px;
+            border: none;
+        }
+        button{
+            margin: 10px 0 10px 0;
+            padding: 10px;
+            background-color: aqua;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+        #back{
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h2> Forgot Password </h2>
+            <label> Enter Your Email: </label>
+            <input type="text" name="email" placeholder="Enter Your Email or Username" id="mailinput">
+            <button type="submit" value="submit" name="submit" id="submit"> SUBMIT </button>
+            <button type="button" value="back" name="back" id="back"><a href="Login_page.html"> BACK </a></button>
+            <p><a href="Login_page.html"> Remember password?<b>Click here</b></a></p>
+        </div>
+    </div>
+</body>
+
+</html>
