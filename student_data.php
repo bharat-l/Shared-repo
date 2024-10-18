@@ -27,7 +27,9 @@ if ($_SESSION['user_id'] == '') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- <link rel="stylesheet" href="jscsspage.css"> -->
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
     <style>
         /* Custom styling for header and footer */
@@ -280,7 +282,7 @@ if ($_SESSION['user_id'] == '') {
             }
 
             // Set the number of rows per page
-            $perPage = 8;
+            $perPage = 10;
 
             // Get the current page number from the URL, default to page 1 if not set
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -392,47 +394,51 @@ if ($_SESSION['user_id'] == '') {
 
         <div class="tab mt-5">
             <div class="tab-data">
-                <table width="100%" class="table table-bordered table-striped">
+                <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th> Student name</th>
-                            <th> Father name</th>
-                            <th> Address </th>
-                            <th> Phone number</th>
-                            <th> Marks </th>
-                            <th> Email address </th>
-                            <th> Actions </th>
+                            <th>Student name</th>
+                            <th>Father name</th>
+                            <th>Address</th>
+                            <th>Phone number</th>
+                            <th>Marks</th>
+                            <th>Email address</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="formData">
-                        <?php if ($result->num_rows > 0): ?>
-                            <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($row['student_name']) ?></td>
-                                    <td><?= htmlspecialchars($row['Father_name']) ?></td>
-                                    <td><?= htmlspecialchars($row['address']) ?></td>
-                                    <td><?= htmlspecialchars($row['phone_number']) ?></td>
-                                    <td><?= htmlspecialchars($row['marks']) ?></td>
-                                    <td><?= htmlspecialchars($row['email_address']) ?></td>
-                                    <td>
-                                        <div class="d-flex justify-content-around">
-                                            <button id="edit" class="btn btn-info"><a
-                                                    href="edit.php?id=<?= $row['id'] ?>"
-                                                    class="text-white text-decoration-none"> Edit </a></button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal"
-                                                onclick="setDeleteId(<?= $row['id'] ?>)">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endwhile; ?>
-                        <?php else: ?>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
                             <tr>
-                                <td colspan="7" class="text-center">No data available</td>
+                                <td><?= htmlspecialchars($row['student_name']) ?></td>
+                                <td><?= htmlspecialchars($row['Father_name']) ?></td>
+                                <td><?= htmlspecialchars($row['address']) ?></td>
+                                <td><?= htmlspecialchars($row['phone_number']) ?></td>
+                                <td><?= htmlspecialchars($row['marks']) ?></td>
+                                <td><?= htmlspecialchars($row['email_address']) ?></td>
+                                <td>
+                                    <div class="d-flex justify-content-around">
+                                        <a href="edit.php?id=<?= $row['id'] ?>" class="btn btn-info text-white">Edit</a>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="setDeleteId(<?= $row['id'] ?>)">Delete</button>
+                                    </div>
+                                </td>
                             </tr>
-                        <?php endif; ?>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
+
+                <!-- Initialize DataTable -->
+                <script>
+                    $(document).ready(function() {
+                        $('#example').DataTable({
+                            "pagingType": "full_numbers", // Enable pagination buttons
+                            "lengthChange": true, // Allow changing number of records per page
+                            "searching": true, // Enable search feature
+                            "ordering": true, // Enable column ordering
+                            "info": true, // Show table information
+                            "autoWidth": false, // Disable automatic column width calculation
+                        });
+                    });
+                </script>
             </div>
         </div>
 
@@ -538,6 +544,7 @@ if ($_SESSION['user_id'] == '') {
             };
             xhr.send();
         }
+        
         // Handle pagination link clicks
         document.addEventListener('click', function(e) {
             if (e.target && e.target.classList.contains('pagination-link')) {
