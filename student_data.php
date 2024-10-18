@@ -544,7 +544,7 @@ if ($_SESSION['user_id'] == '') {
             };
             xhr.send();
         }
-        
+
         // Handle pagination link clicks
         document.addEventListener('click', function(e) {
             if (e.target && e.target.classList.contains('pagination-link')) {
@@ -553,6 +553,7 @@ if ($_SESSION['user_id'] == '') {
                 loadPage(page);
             }
         });
+        //new branch
         // Load the first page on initial load
         loadPage(1);
     </script>
